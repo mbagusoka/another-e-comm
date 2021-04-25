@@ -1,6 +1,6 @@
 package com.another.product.service.config;
 
-import com.another.product.core.gateway.ItemCommandGateway;
+import com.another.product.core.item.gateway.ItemCommandGateway;
 import com.another.product.persistence.item.DefaultItemCommandGateway;
 import com.another.product.persistence.item.ItemRepository;
 import org.springframework.boot.autoconfigure.domain.EntityScan;

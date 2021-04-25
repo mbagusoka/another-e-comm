@@ -1,6 +1,6 @@
 package com.another.product.service.config;
 
-import com.another.product.core.gateway.ItemCommandGateway;
+import com.another.product.core.item.gateway.ItemCommandGateway;
 import com.another.product.core.item.create.CreateItem;
 import com.another.product.core.item.create.CreateItemUseCase;
 import org.springframework.context.annotation.Bean;

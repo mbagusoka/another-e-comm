@@ -1,6 +1,6 @@
 package com.another.product.core.item.create;
 
-import com.another.product.core.gateway.ItemCommandGateway;
+import com.another.product.core.item.gateway.ItemCommandGateway;
 import com.another.product.core.item.entity.Item;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;

@@ -1,7 +1,7 @@
 package com.another.product.core.item.create;
 
 import com.another.product.core.common.Randomizer;
-import com.another.product.core.gateway.ItemCommandGateway;
+import com.another.product.core.item.gateway.ItemCommandGateway;
 import com.another.product.core.item.entity.Item;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
