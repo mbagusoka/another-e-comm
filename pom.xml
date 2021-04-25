@@ -19,6 +19,7 @@
     <modules>
         <module>domain/product-core</module>
         <module>persistence/product-persistence</module>
+        <module>apps/product-service</module>
     </modules>
 
     <build>
