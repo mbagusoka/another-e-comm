@@ -4,9 +4,21 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.another</groupId>
+    <groupId>com.another</groupId>
     <artifactId>another-e-comm</artifactId>
     <version>1.0</version>
+
+    <packaging>pom</packaging>
+
+    <properties>
+        <java.version>11</java.version>
+        <e-comm.spring.version>2.4.5</e-comm.spring.version>
+        <e-comm.surefire.version>2.22.0</e-comm.surefire.version>
+    </properties>
+
+    <modules>
+        <module>domain/product-core</module>
+    </modules>
 
     <build>
         <plugins>
