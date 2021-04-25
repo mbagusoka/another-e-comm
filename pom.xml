@@ -14,12 +14,16 @@
         <java.version>11</java.version>
         <e-comm.spring.version>2.4.5</e-comm.spring.version>
         <e-comm.surefire.version>2.22.0</e-comm.surefire.version>
+        <e-comm.junit.version>5.7.1</e-comm.junit.version>
+        <e-comm.hibernate-validator.version>6.1.7.Final</e-comm.hibernate-validator.version>
+        <e-comm.jakarta-el.version>3.0.3</e-comm.jakarta-el.version>
     </properties>
 
     <modules>
         <module>domain/product-core</module>
         <module>persistence/product-persistence</module>
         <module>apps/product-service</module>
+        <module>common/validator</module>
     </modules>
 
     <build>
