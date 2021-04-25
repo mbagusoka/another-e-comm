@@ -1,5 +1,6 @@
 package com.another.product.persistence.item;
 
+import com.another.product.core.item.create.CreateItemRequest;
 import com.another.product.core.item.entity.Item;
 import com.another.product.persistence.common.AuditTrail;
 import lombok.*;
@@ -16,6 +17,7 @@ import java.math.BigDecimal;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class ItemEntity extends AuditTrail implements Item, Serializable {
 
     private static final long serialVersionUID = 4275595619863897948L;
@@ -45,5 +47,13 @@ public class ItemEntity extends AuditTrail implements Item, Serializable {
     @Override
     public int hashCode() {
         return 1958895947;
+    }
+
+    public static ItemEntity valueOf(CreateItemRequest request) {
+        return builder()
+            .name(request.getName())
+            .price(request.getPrice())
+            .imageUrl(request.getImageUrl())
+            .build();
     }
 }
