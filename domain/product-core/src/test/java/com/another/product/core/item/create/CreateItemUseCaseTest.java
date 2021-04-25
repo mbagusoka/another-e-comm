@@ -1,7 +1,7 @@
 package com.another.product.core.item.create;
 
 import com.another.product.core.common.Randomizer;
-import com.another.product.core.gateway.ItemGateway;
+import com.another.product.core.gateway.ItemCommandGateway;
 import com.another.product.core.item.entity.Item;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -27,7 +27,7 @@ class CreateItemUseCaseTest {
     private CreateItemUseCase useCase;
 
     @Mock
-    private ItemGateway itemGateway;
+    private ItemCommandGateway itemCommandGateway;
 
     @Mock
     private CreateItemPresenter presenter;
@@ -53,7 +53,7 @@ class CreateItemUseCaseTest {
     void givenRequest_whenCreate_shouldCallItemGateway() {
         prepareAndExecute();
 
-        verify(itemGateway).create(request);
+        verify(itemCommandGateway).create(request);
     }
 
     @Test
@@ -86,6 +86,6 @@ class CreateItemUseCaseTest {
         when(item.getPrice()).thenReturn(BigDecimal.ONE);
         when(item.getImageUrl()).thenReturn("dummy");
 
-        when(itemGateway.create(any())).thenReturn(item);
+        when(itemCommandGateway.create(any())).thenReturn(item);
     }
 }

@@ -1,7 +1,7 @@
 package com.another.product.service.config;
 
-import com.another.product.core.gateway.ItemGateway;
-import com.another.product.persistence.item.DefaultItemGateway;
+import com.another.product.core.gateway.ItemCommandGateway;
+import com.another.product.persistence.item.DefaultItemCommandGateway;
 import com.another.product.persistence.item.ItemRepository;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
@@ -19,8 +19,8 @@ import java.util.Optional;
 public class JpaConfiguration {
 
     @Bean
-    public ItemGateway itemGateway(ItemRepository itemRepository) {
-        return new DefaultItemGateway(itemRepository);
+    public ItemCommandGateway itemGateway(ItemRepository itemRepository) {
+        return new DefaultItemCommandGateway(itemRepository);
     }
 
     @Bean

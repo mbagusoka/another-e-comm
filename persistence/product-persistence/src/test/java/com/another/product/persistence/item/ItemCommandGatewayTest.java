@@ -15,12 +15,12 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-class ItemGatewayTest {
+class ItemCommandGatewayTest {
 
     private final CreateItemRequest createItemRequest = Randomizer.get(CreateItemRequest.class);
 
     @InjectMocks
-    private DefaultItemGateway itemGateway;
+    private DefaultItemCommandGateway itemGateway;
 
     @Mock
     private ItemRepository itemRepository;
