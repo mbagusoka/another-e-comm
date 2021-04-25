@@ -24,6 +24,7 @@
         <module>persistence/product-persistence</module>
         <module>apps/product-service</module>
         <module>common/validator</module>
+        <module>domain/product-client</module>
     </modules>
 
     <build>
