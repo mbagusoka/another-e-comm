@@ -17,14 +17,16 @@
         <e-comm.junit.version>5.7.1</e-comm.junit.version>
         <e-comm.hibernate-validator.version>6.1.7.Final</e-comm.hibernate-validator.version>
         <e-comm.jakarta-el.version>3.0.3</e-comm.jakarta-el.version>
+        <e-comm.easy-random.version>4.3.0</e-comm.easy-random.version>
     </properties>
 
     <modules>
         <module>domain/product-core</module>
         <module>persistence/product-persistence</module>
         <module>apps/product-service</module>
-        <module>common/validator</module>
         <module>domain/product-client</module>
+
+        <module>common/validator</module>
     </modules>
 
     <build>

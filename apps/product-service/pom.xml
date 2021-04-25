@@ -57,6 +57,12 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.jeasy</groupId>
+            <artifactId>easy-random-core</artifactId>
+            <version>${e-comm.easy-random.version}</version>
+            <scope>test</scope>
+        </dependency>
 
         <dependency>
             <groupId>com.another</groupId>

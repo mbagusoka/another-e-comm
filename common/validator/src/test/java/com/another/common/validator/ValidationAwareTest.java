@@ -15,9 +15,9 @@ class ValidationAwareTest {
 
     @Test
     void givenNotValidRequest_whenValidate_shouldThrowConstraintViolationException() {
-        TestRequest testRequest = new TestRequest("", Collections.emptyList());
+        TestRequest testRequest = new TestRequest("dummy", Collections.emptyList());
         Exception e = assertThrows(ConstraintViolationException.class, testRequest::validate);
-        assertEquals("someList: must not be empty, someString: must not be blank", e.getMessage());
+        assertEquals("someList: must not be empty", e.getMessage());
     }
 
     static class TestRequest extends ValidationAware<TestRequest> {

@@ -4,6 +4,7 @@ import com.another.product.client.request.CreateItemRestRequest;
 import com.another.product.client.response.CreateItemRestResponse;
 import com.another.product.core.item.create.CreateItem;
 import com.another.product.core.item.create.CreateItemRequest;
+import com.another.product.service.constant.Routes;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +18,7 @@ public class CreateItemController {
 
     private final CreateItem createItem;
 
-    @PostMapping("/item")
+    @PostMapping(Routes.ITEM)
     @ResponseStatus(HttpStatus.CREATED)
     public CreateItemRestResponse create(@RequestBody CreateItemRestRequest restRequest) {
         CreateItemRequest itemRequest = getItemRequest(restRequest);
