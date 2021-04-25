@@ -1,6 +1,7 @@
-package com.another.product.item.create;
+package com.another.product.core.item.create;
 
-import com.another.product.gateway.ItemGateway;
+import com.another.product.core.gateway.ItemGateway;
+import com.another.product.core.item.entity.Item;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
@@ -11,7 +12,8 @@ public class CreateItemUseCase implements CreateItem {
 
     @Override
     public void create(@NonNull CreateItemRequest request, CreateItemPresenter presenter) {
-        CreateItemResponse response = itemGateway.create(request);
+        Item createdItem = itemGateway.create(request);
+        CreateItemResponse response = CreateItemResponse.valueOf(createdItem);
 
         presenter.present(response);
     }

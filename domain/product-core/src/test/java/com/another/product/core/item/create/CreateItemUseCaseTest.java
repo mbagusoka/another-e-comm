@@ -1,7 +1,8 @@
-package com.another.product.item.create;
+package com.another.product.core.item.create;
 
-import com.another.product.common.Randomizer;
-import com.another.product.gateway.ItemGateway;
+import com.another.product.core.common.Randomizer;
+import com.another.product.core.gateway.ItemGateway;
+import com.another.product.core.item.entity.Item;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
@@ -9,6 +10,8 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
+import java.math.BigDecimal;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -28,6 +31,9 @@ class CreateItemUseCaseTest {
 
     @Mock
     private CreateItemPresenter presenter;
+
+    @Mock
+    private Item item;
 
     @BeforeEach
     void setUp() {
@@ -75,8 +81,11 @@ class CreateItemUseCaseTest {
     }
 
     private void stubItem() {
-        CreateItemResponse response = Randomizer.get(CreateItemResponse.class);
+        when(item.getId()).thenReturn(1L);
+        when(item.getName()).thenReturn("dummy");
+        when(item.getPrice()).thenReturn(BigDecimal.ONE);
+        when(item.getImageUrl()).thenReturn("dummy");
 
-        when(itemGateway.create(any())).thenReturn(response);
+        when(itemGateway.create(any())).thenReturn(item);
     }
 }

@@ -1,4 +1,4 @@
-package com.another.product.common;
+package com.another.product.core.common;
 
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;

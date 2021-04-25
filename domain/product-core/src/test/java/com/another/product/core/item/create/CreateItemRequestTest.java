@@ -1,4 +1,4 @@
-package com.another.product.item.create;
+package com.another.product.core.item.create;
 
 import org.junit.jupiter.api.Test;
 
