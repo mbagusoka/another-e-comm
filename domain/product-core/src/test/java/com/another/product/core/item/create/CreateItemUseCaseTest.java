@@ -44,9 +44,9 @@ class CreateItemUseCaseTest {
     void givenNullRequest_whenCreate_shouldThrowException() {
         Executable task = () -> useCase.create(null, presenter);
 
-        Exception e = assertThrows(NullPointerException.class, task);
+        Exception e = assertThrows(IllegalArgumentException.class, task);
 
-        assertThat(e.getMessage()).isEqualTo("request is marked non-null but is null");
+        assertThat(e.getMessage()).isEqualTo("Request cannot be null");
     }
 
     @Test

@@ -42,6 +42,12 @@
             <version>4.3.0</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>com.another</groupId>
+            <artifactId>validator</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -1,22 +1,22 @@
 package com.another.product.core.item.create;
 
-import lombok.NonNull;
+import com.another.common.validator.ValidationAware;
+import lombok.EqualsAndHashCode;
 import lombok.Value;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 
 @Value
-public class CreateItemRequest {
+@EqualsAndHashCode(callSuper = false)
+public class CreateItemRequest extends ValidationAware<CreateItemRequest> {
 
+    @NotBlank(message = "Name cannot be empty")
     String name;
 
+    @NotNull(message = "Price cannot be empty")
     BigDecimal price;
 
     String imageUrl;
-
-    public CreateItemRequest(@NonNull String name, @NonNull BigDecimal price, String imageUrl) {
-        this.name = name;
-        this.price = price;
-        this.imageUrl = imageUrl;
-    }
 }

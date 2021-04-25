@@ -2,6 +2,7 @@ package com.another.product.core.item.create;
 
 import org.junit.jupiter.api.Test;
 
+import javax.validation.ConstraintViolationException;
 import java.math.BigDecimal;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -11,21 +12,19 @@ class CreateItemRequestTest {
 
     @Test
     void givenNullName_whenCreateItemRequest_shouldThrowException() {
-        Exception e = assertThrows(
-            NullPointerException.class,
-            () -> new CreateItemRequest(null, BigDecimal.ONE, null)
-        );
+        CreateItemRequest request = new CreateItemRequest(null, BigDecimal.ONE, null);
 
-        assertThat(e.getMessage()).isEqualTo("name is marked non-null but is null");
+        Exception e = assertThrows(ConstraintViolationException.class, request::validate);
+
+        assertThat(e.getMessage()).isEqualTo("name: Name cannot be empty");
     }
 
     @Test
     void givenNullPrice_whenCreateItemRequest_shouldThrowException() {
-        Exception e = assertThrows(
-            NullPointerException.class,
-            () -> new CreateItemRequest("dummy", null, null)
-        );
+        CreateItemRequest request = new CreateItemRequest("dummy", null, null);
 
-        assertThat(e.getMessage()).isEqualTo("price is marked non-null but is null");
+        Exception e = assertThrows(ConstraintViolationException.class, request::validate);
+
+        assertThat(e.getMessage()).isEqualTo("price: Price cannot be empty");
     }
 }
