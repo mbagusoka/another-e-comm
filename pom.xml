@@ -21,10 +21,14 @@
     </properties>
 
     <modules>
+        <!-- PRODUCT -->
         <module>domain/product-core</module>
         <module>persistence/product-persistence</module>
         <module>apps/product-service</module>
         <module>domain/product-client</module>
+
+        <!-- USER -->
+        <module>domain/user-core</module>
 
         <module>common/validator</module>
     </modules>

@@ -1,8 +1,8 @@
-package com.another.product.core.item.create;
+package com.another.user.core.user.create;
 
-import com.another.product.core.common.Randomizer;
-import com.another.product.core.item.gateway.ItemCommandGateway;
-import com.another.product.core.item.entity.Item;
+import com.another.user.core.common.Randomizer;
+import com.another.user.core.user.entity.User;
+import com.another.user.core.user.gateway.UserCommandGateway;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.function.Executable;
@@ -12,30 +12,28 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import javax.validation.ConstraintViolationException;
-import java.math.BigDecimal;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.nullable;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-class CreateItemUseCaseTest {
+class CreateUserUseCaseTest {
 
-    private final CreateItemRequest request = Randomizer.get(CreateItemRequest.class);
+    private final CreateUserRequest request = Randomizer.get(CreateUserRequest.class);
 
     @InjectMocks
-    private CreateItemUseCase useCase;
+    private CreateUserUseCase useCase;
 
     @Mock
-    private ItemCommandGateway itemCommandGateway;
+    private UserCommandGateway userCommandGateway;
 
     @Mock
-    private CreateItemPresenter presenter;
+    private CreateUserPresenter presenter;
 
     @Mock
-    private Item item;
+    private User user;
 
     @BeforeEach
     void setUp() {
@@ -61,20 +59,20 @@ class CreateItemUseCaseTest {
     }
 
     @Test
-    void givenNullName_whenCreate_shouldThrowException() {
-        CreateItemRequest itemRequest = new CreateItemRequest(null, BigDecimal.ONE, null);
-        Executable task = () -> useCase.create(itemRequest, presenter);
+    void givenNullEmail_whenCreate_shouldThrowException() {
+        CreateUserRequest userRequest = new CreateUserRequest(null, "dummy", "123", "dummy");
+        Executable task = () -> useCase.create(userRequest, presenter);
 
         Exception e = assertThrows(ConstraintViolationException.class, task);
 
-        assertThat(e.getMessage()).isEqualTo("name: Name cannot be empty");
+        assertThat(e.getMessage()).isEqualTo("email: Email cannot be empty");
     }
 
     @Test
-    void givenRequest_whenCreate_shouldCallItemGateway() {
+    void givenRequest_whenCreate_shouldCallUserGateway() {
         prepareAndExecute();
 
-        verify(itemCommandGateway).create(request);
+        verify(userCommandGateway).save(request);
     }
 
     @Test
@@ -88,25 +86,26 @@ class CreateItemUseCaseTest {
     void givenRequest_whenCreate_shouldCallPresenterWithCorrectResponse() {
         prepareAndExecute();
 
-        ArgumentCaptor<CreateItemResponse> captor = ArgumentCaptor.forClass(CreateItemResponse.class);
+        ArgumentCaptor<CreateUserResponse> captor = ArgumentCaptor.forClass(CreateUserResponse.class);
         verify(presenter).present(captor.capture());
-        CreateItemResponse actual = captor.getValue();
+        CreateUserResponse actual = captor.getValue();
 
         assertThat(actual).isNotNull();
     }
 
     private void prepareAndExecute() {
-        stubItem();
+        stubUser();
 
         useCase.create(request, presenter);
     }
 
-    private void stubItem() {
-        when(item.getId()).thenReturn(1L);
-        when(item.getName()).thenReturn("dummy");
-        when(item.getPrice()).thenReturn(BigDecimal.ONE);
-        when(item.getImageUrl()).thenReturn("dummy");
+    private void stubUser() {
+        when(user.getId()).thenReturn(1L);
+        when(user.getEmail()).thenReturn("du@m.my");
+        when(user.getName()).thenReturn("dummy");
+        when(user.getPhone()).thenReturn("123");
+        when(user.getPassword()).thenReturn("dummy");
 
-        when(itemCommandGateway.create(any())).thenReturn(item);
+        when(userCommandGateway.save(any())).thenReturn(user);
     }
 }
