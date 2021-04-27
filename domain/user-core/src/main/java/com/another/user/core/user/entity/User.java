@@ -4,13 +4,13 @@ public interface User {
 
     Long getId();
 
-    String email();
+    String getEmail();
 
-    String name();
+    String getName();
 
-    String phone();
+    String getPhone();
 
-    String password();
+    String getPassword();
 
     boolean isActive();
 }

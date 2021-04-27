@@ -11,7 +11,7 @@ public class CreateItemUseCase implements CreateItem {
 
     @Override
     public void create(CreateItemRequest request, CreateItemPresenter presenter) {
-        validateRequest(request);
+        validateRequest(request, presenter);
 
         doCreate(request, presenter);
     }
@@ -23,9 +23,13 @@ public class CreateItemUseCase implements CreateItem {
         presenter.present(response);
     }
 
-    private void validateRequest(CreateItemRequest request) {
+    private void validateRequest(CreateItemRequest request, CreateItemPresenter presenter) {
         if (null == request) {
             throw new IllegalArgumentException("Request cannot be null");
+        }
+
+        if (null == presenter) {
+            throw new IllegalArgumentException("Presenter cannot be null");
         }
 
         request.validate();
